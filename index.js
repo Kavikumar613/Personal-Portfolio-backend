@@ -14,6 +14,7 @@ app.use(express.urlencoded({ limit: "25mb" }));
 
 
 
+
 const sentEmail = ({userame ,email, subject , message })=>{
     return new Promise((resolve,reject)=>{
         var transporter = nodemailer.createTransport({
@@ -43,6 +44,10 @@ const sentEmail = ({userame ,email, subject , message })=>{
         })
     });
 };
+
+app.get("/", (req, res)=>{
+    res.send("Perfect");
+})
 
 app.post("/sendEmail", (req, res) => {
     const { userame, email, subject, message } = req.body;
